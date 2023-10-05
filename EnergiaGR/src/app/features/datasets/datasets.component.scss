@@ -1,0 +1,50 @@
+.datasets {
+  margin: 2rem;
+}
+.page-table {
+  display: flex;
+  gap: 40px;
+}
+.main-image {
+  height: 100%;
+  width: 330px;
+}
+.divider {
+  background: #00722f;
+  height: 660px;
+  width: 2px;
+  margin: auto 0;
+}
+.main-text {
+  .page-title {
+    margin-top: 60px;
+    font-size: 46px;
+    color: #54c2cc;
+    text-align: center;
+  }
+  .page-subtitle {
+    color: #20525c;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 75px;
+  }
+  .small-text {
+    font-size: 17px;
+    color: #393939;
+    font-weight: 300;
+    span {
+      font-weight: 500;
+      color: #83ce88;
+    }
+  }
+  display: flex;
+  flex-direction: column;
+}
+
+::ng-deep .theme-dark {
+  .main-text {
+    .small-text {
+      color: white!important;
+    }
+  }
+}

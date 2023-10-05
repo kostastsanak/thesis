@@ -1,0 +1,6 @@
+1.  https://github.com/IoannisTheocharakis/SEMANTIC-WEB-PROJECT/tree/main/SemanticWeb-Frontend -> y/y
+2.  ng add @angular/material -> y/y/y -> indigo-pink
+3.  angular.json -> "styles": [ ]   και βαζεις και στα 2  αυτο -> add grid.css
+4.  tsconfig.json -> change ->   "strictTemplates": false
+5.  app.module -> add to provider this ->   providers: [{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
+-> add to imports this -> imports: [HttpClientModule]

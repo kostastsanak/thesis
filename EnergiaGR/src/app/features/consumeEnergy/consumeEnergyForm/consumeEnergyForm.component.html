@@ -1,0 +1,30 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <mat-form-field [appearance]="inputAppearance" [color]="inputColor" class="col-7">
+      <mat-label>City</mat-label>
+      <input matInput type="text" formControlName="city" />
+    </mat-form-field>
+
+    <!--
+    <mat-form-field [appearance]="inputAppearance" [color]="inputColor" class="col">
+      <mat-label>Days</mat-label>
+      <mat-select  formControlName="day" >
+        <mat-option *ngFor="let day of days" [value]="day">
+          {{day}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>   -->
+    <div class="col">
+        <div class="d-flex gap-1">
+          <button type="button" class="w-100 reset-btn" (click)="resetForm()" mat-button>
+            <mat-icon class="mr-5">restart_alt</mat-icon>
+            <span class="txt-color">Reset Form</span>
+          </button>
+          <button mat-raised-button class="w-100 search-btn" type="submit">
+            <mat-icon class="mr-5 search-btn-icon">search</mat-icon>
+            <span>Search</span>
+          </button>
+        </div>
+    </div>
+  </div>
+</form>

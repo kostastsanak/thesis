@@ -1,0 +1,30 @@
+<app-totalEnergyProductionForm> </app-totalEnergyProductionForm>
+<div *ngIf="showError" class="error d-flex align-items-center">
+  <mat-icon class="mr-5"> error </mat-icon> Error: No such name exist!
+</div>
+<div *ngIf="(totalEnergyProductionService.totalEnergyProductionRequestSubject$ | async) !== null" [hidden]="showError" class="mt-20">
+    <mat-tab-group>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="mr-5">table_rows</mat-icon>
+          Table
+        </ng-template>
+        <app-totalEnergyProductionTable (correctRequest)="setError($event)"> </app-totalEnergyProductionTable>
+      </mat-tab>
+      <mat-tab >
+        <ng-template mat-tab-label>
+          <mat-icon class="mr-5">bar_chart</mat-icon>
+          Bar Chart
+        </ng-template>
+        <app-totalEnergyProductionCharts type="bar"> </app-totalEnergyProductionCharts>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="mr-5">pie_chart</mat-icon>
+          Pie Chart 
+        </ng-template>
+        <app-totalEnergyProductionCharts type="rose"> </app-totalEnergyProductionCharts>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  

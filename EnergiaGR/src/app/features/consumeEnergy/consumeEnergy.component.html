@@ -1,0 +1,30 @@
+<app-consumeEnergyForm> </app-consumeEnergyForm>
+<div *ngIf="showError" class="error d-flex align-items-center">
+  <mat-icon class="mr-5"> error </mat-icon> Error: No such name exist!
+</div>
+<div *ngIf="(consume_energyService.consumeEnergyRequestSubject$ | async) !== null" [hidden]="showError" class="mt-20">
+    <mat-tab-group>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="mr-5">table_rows</mat-icon>
+          Table
+        </ng-template>
+        <app-consumeEnergyTable (correctRequest)="setError($event)"> </app-consumeEnergyTable>
+      </mat-tab>
+      <mat-tab >
+        <ng-template mat-tab-label>
+          <mat-icon class="mr-5">bar_chart</mat-icon>
+          Bar Chart
+        </ng-template>
+        <app-consumeEnergyBarChart> </app-consumeEnergyBarChart>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="mr-5">pie_chart</mat-icon>
+          Pie Chart 
+        </ng-template>
+        <app-consumeEnergyPieChart> </app-consumeEnergyPieChart>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  

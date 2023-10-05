@@ -1,0 +1,4 @@
+<ng-container [ngSwitch]="type">
+  <app-bar-chart stringInfo="mwh"  [data$]="barChartModel$" title="" *ngSwitchCase="'bar'"> </app-bar-chart>
+  <app-rose-diagram stringInfo="mwh" [data$]="barChartModel$" title="" *ngSwitchCase="'rose'"> </app-rose-diagram>
+</ng-container>

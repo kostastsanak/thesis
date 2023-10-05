@@ -1,0 +1,69 @@
+<div>
+  <div class="row justify-content-between">
+    <mat-form-field appearance="standard" class="col-4">
+      <mat-label class="d-flex align-self-center">
+        <mat-icon class="mr-5" color="primary">filter_alt</mat-icon>Filter
+      </mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Search in results"
+        #input />
+    </mat-form-field>
+  </div>
+  <div class="table-container my-15">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      multiTemplateDataRows
+      class="w-100 mat-elevation-z2"
+      matSort>
+      <!-- area Column -->
+      <ng-container matColumnDef="area">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Area</th>
+        <td mat-cell *matCellDef="let element">{{ element.area }}</td>
+      </ng-container>
+      <!-- energy_mwh Column -->
+      <ng-container matColumnDef="energy_mwh">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Energy MWH</th>
+        <td mat-cell *matCellDef="let element">{{ element.energy_mwh |number}}</td>
+      </ng-container>
+      <!-- date Column -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.date | date }}
+        </td>
+      </ng-container>
+      <!-- update Column -->
+      <ng-container matColumnDef="update" >
+        <th mat-header-cell *matHeaderCellDef class="w-10">
+          <button type="button" class="w-100 update-btn" (click)="updateForm()" mat-raised-button>
+            <mat-icon class="mr-5">update</mat-icon>
+            <span class="txt-color">Update Data</span>
+          </button>
+        </th>
+        <td mat-cell *matCellDef="let element"></td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: columnsToDisplay"></tr>
+    </table>
+    <mat-card class="mt-10 p-0">
+      <mat-paginator
+        [length]="
+          (pagging$ | async) ? (pagging$ | async).totalEntries : 0
+        "
+        [pageIndex]="
+          (pagging$ | async) ? (pagging$ | async).currentPage -1: 0
+        "
+        [pageSize]="
+          (pagging$ | async) ? (pagging$ | async).entriesPerPage : 10
+        "
+        [pageSizeOptions]="[5, 10, 15, 25, 50]"
+        showFirstLastButtons>
+      </mat-paginator>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+.table-width {
+    max-width: 100% !important;
+    overflow: auto;
+}
+
+.error-msg {
+    padding-top: 1.34375em;
+    padding-bottom: 1.34375em;
+}
+
+.update-btn .mat-icon, ::ng-deep .theme-light .update-btn .txt-color{
+    color:#00722f!important
+}
