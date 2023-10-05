@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_reviews_services\bin\Release\net6.0\publish\</_PublishTargetUrl>
+    <History>True|2023-06-07T14:09:53.2719160Z;True|2023-06-07T17:08:38.7345145+03:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

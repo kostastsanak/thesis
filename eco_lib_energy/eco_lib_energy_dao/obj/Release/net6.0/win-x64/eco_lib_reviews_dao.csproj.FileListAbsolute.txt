@@ -1,0 +1,12 @@
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews_dao\bin\Release\net6.0\win-x64\eco_lib_reviews_dao.deps.json
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews_dao\bin\Release\net6.0\win-x64\eco_lib_reviews_dao.dll
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews_dao\bin\Release\net6.0\win-x64\eco_lib_reviews_dao.pdb
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews_dao\obj\Release\net6.0\win-x64\eco_lib_reviews_dao.csproj.AssemblyReference.cache
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews_dao\obj\Release\net6.0\win-x64\eco_lib_reviews_dao.GeneratedMSBuildEditorConfig.editorconfig
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews_dao\obj\Release\net6.0\win-x64\eco_lib_reviews_dao.AssemblyInfoInputs.cache
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews_dao\obj\Release\net6.0\win-x64\eco_lib_reviews_dao.AssemblyInfo.cs
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews_dao\obj\Release\net6.0\win-x64\eco_lib_reviews_dao.csproj.CoreCompileInputs.cache
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews_dao\obj\Release\net6.0\win-x64\eco_lib_reviews_dao.dll
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews_dao\obj\Release\net6.0\win-x64\refint\eco_lib_reviews_dao.dll
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews_dao\obj\Release\net6.0\win-x64\eco_lib_reviews_dao.pdb
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews_dao\obj\Release\net6.0\win-x64\ref\eco_lib_reviews_dao.dll

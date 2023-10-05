@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>eco_lib_reviewsV2</id>
+    <version>1.0.0</version>
+    <authors>eco_lib_reviewsV2</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\tsanak\Desktop\scripts\thesis\energy\eco_lib_reviewsV2\eco_lib_reviewsV2\bin\Debug\net6.0\eco_lib_reviewsV2.dll" target="lib\net6.0\eco_lib_reviewsV2.dll" />
+  </files>
+</package>

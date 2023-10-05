@@ -1,0 +1,15 @@
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews\bin\Debug\net6.0\eco_lib_reviews.deps.json
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews\bin\Debug\net6.0\eco_lib_reviews.dll
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews\bin\Debug\net6.0\eco_lib_reviews.pdb
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews\obj\Debug\net6.0\eco_lib_reviews.csproj.AssemblyReference.cache
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews\obj\Debug\net6.0\eco_lib_reviews.GeneratedMSBuildEditorConfig.editorconfig
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews\obj\Debug\net6.0\eco_lib_reviews.AssemblyInfoInputs.cache
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews\obj\Debug\net6.0\eco_lib_reviews.AssemblyInfo.cs
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews\obj\Debug\net6.0\eco_lib_reviews.csproj.CoreCompileInputs.cache
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews\obj\Debug\net6.0\eco_lib_reviews.dll
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews\obj\Debug\net6.0\refint\eco_lib_reviews.dll
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews\obj\Debug\net6.0\eco_lib_reviews.pdb
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews\obj\Debug\net6.0\ref\eco_lib_reviews.dll
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews\bin\Debug\net6.0\eco_lib_core.dll
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews\bin\Debug\net6.0\eco_lib_core.pdb
+\\Srvfil\datadisk\wwwlocal\kt\projects\sites\eco_lib\eco_lib_reviews\eco_lib_reviews\obj\Debug\net6.0\eco_lib_reviews.csproj.CopyComplete
