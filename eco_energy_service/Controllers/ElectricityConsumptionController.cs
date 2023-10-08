@@ -1,5 +1,5 @@
+using eco_energy_services.Core;
 using eco_energy_services.Handlers;
-using eco_lib_core;
 using eco_lib_energy;
 using eco_lib_energy_dao.DBModels;
 using Microsoft.AspNetCore.Mvc;
@@ -10,8 +10,7 @@ namespace eco_energy_services.Controllers
     [Route("api/gov/electricity/consumption")]
     public class ElectricityConsumptionController : ControllerBase
     {
-        private ActionResponse _response;
-        private readonly string _recipient;
+        private readonly ActionResponse _response;
         private readonly ElectricityConsumptionHandler _electricityConsumptionHandler;
         private readonly energy_DBHandling _dBHandling;
 
@@ -19,69 +18,65 @@ namespace eco_energy_services.Controllers
         {
             _dBHandling = new energy_DBHandling(configuration);
             _response = new ActionResponse();
-            _recipient = configuration.GetValue<string>("GlobalVariables:ERROR_EMAIL_NOTIFICATIONS");
             _electricityConsumptionHandler = new ElectricityConsumptionHandler(configuration, _response);
         }
 
         [HttpPut("update")]
-        public async Task<ActionResponse> PassDatatoDatabase()
+        public async Task<ActionResponse> PassDataToDatabase()
         {
             try
             {
                 var data = await _electricityConsumptionHandler.GetData();
                 if (!data.IsListSafe())
                 {
-                    ActionResponseHandlers.HandleError(ref _response, operationType: ActionResponseHandlers.OperationType.INSERT, "An error occurred at Electrical consumption data");
+                    ActionResponseHandler.CreateResponse(_response, "ERROR", "An error occurred at Electrical consumption data");
                 }
                 else
                 {
-                    ActionResponseHandlers.HandleSuccess(ref _response, ActionResponseHandlers.OperationType.INSERT, "Electrical consumption data updated successfully!", data);
+                    ActionResponseHandler.CreateResponse(_response, "SUCCESS", data);
                 }
             }
             catch (Exception ex)
             {
-                ActionResponseHandlers.HandleException(ref _response, operationType: ActionResponseHandlers.OperationType.FETCH, ex: ex, recipient: _recipient);
-                throw (ex??ex.InnerException)!;
+                ActionResponseHandler.CreateResponse(_response, "EXCEPTION", ex);
             }
 
             return _response;
         }
 
         [HttpGet("cities")]
-        public async Task<ActionResponse> Cities()
+        public Task<ActionResponse> Cities()
         {
             try
             {
                 var data = _dBHandling.GetDBCities().ToList();
                 if (!data.IsListSafe())
                 {
-                    ActionResponseHandlers.HandleError(ref _response, operationType: ActionResponseHandlers.OperationType.FETCH, "An error occurred at cities retrieve");
+                    ActionResponseHandler.CreateResponse(_response, "ERROR", "An error occurred at cities retrieve");
                 }
                 else
                 {
-                    ActionResponseHandlers.HandleSuccess(ref _response, ActionResponseHandlers.OperationType.INSERT, "Cities retrieved successfully!", data);
+                    ActionResponseHandler.CreateResponse(_response, "SUCCESS", data);
                 }
             }
             catch (Exception ex)
             {
-                ActionResponseHandlers.HandleException(ref _response, operationType: ActionResponseHandlers.OperationType.FETCH, ex: ex, recipient: _recipient);
-                throw (ex ?? ex.InnerException)!;
+                ActionResponseHandler.CreateResponse(_response, "EXCEPTION", ex);
             }
 
-            return _response;
+            return Task.FromResult(_response);
         }
 
         [HttpPost("search")]
-        public ActionResponse SearchDatafromDatabase(ElectricityConsumption.Search Search)
+        public ActionResponse SearchDataFromDatabase(ElectricityConsumption.Search search)
         {
             try
             {
-                ActionResponseHandlers.HandleSuccess(ref _response, ActionResponseHandlers.OperationType.INSERT, "Search results retrieved successfully!", _electricityConsumptionHandler.SearchData(Search));
+                ActionResponseHandler.CreateResponse(_response, "SUCCESS", _electricityConsumptionHandler.SearchData(search));
             }
             catch (Exception ex)
             {
-                ActionResponseHandlers.HandleException(ref _response, operationType: ActionResponseHandlers.OperationType.FETCH, ex: ex, recipient: _recipient);
-                throw (ex ?? ex.InnerException)!;
+                ActionResponseHandler.CreateResponse(_response, "EXCEPTION", ex);
             }
 
             return _response;

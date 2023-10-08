@@ -14,10 +14,4 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="eco_lib_core">
-      <HintPath>..\..\..\eco_lib_core\bin\Release\netcoreapp3.1\win-x64\eco_lib_core.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

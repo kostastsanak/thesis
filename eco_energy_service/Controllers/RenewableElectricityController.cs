@@ -1,7 +1,8 @@
+using eco_energy_services.Core;
 using eco_energy_services.Handlers;
-using eco_lib_core;
 using eco_lib_energy;
 using Microsoft.AspNetCore.Mvc;
+using ActionResponse = eco_energy_services.Core.ActionResponse;
 
 namespace eco_energy_services.Controllers
 {
@@ -9,60 +10,56 @@ namespace eco_energy_services.Controllers
     [Route("api/gov/renewable/electricity/production")]
     public class RenewableElectricityController : ControllerBase
     {
-        private ActionResponse _response;
-        private readonly string _recipient;
+        private readonly ActionResponse _response;
         private readonly RenewableElectricityHandler _renewableElectricityHandler;
 
         public RenewableElectricityController(IConfiguration configuration)
         {
             _response = new ActionResponse();
-            _recipient = configuration.GetValue<string>("GlobalVariables:ERROR_EMAIL_NOTIFICATIONS");
             _renewableElectricityHandler = new RenewableElectricityHandler(configuration, _response);
         }
 
         [HttpPut("update")]
-        public async Task<ActionResponse> PassDatatoDatabase()
+        public async Task<ActionResponse> PassDataToDatabase()
         {
             try
             {
                 var data = await _renewableElectricityHandler.GetData();
                 if (!data.IsListSafe())
                 {
-                    ActionResponseHandlers.HandleError(ref _response, operationType: ActionResponseHandlers.OperationType.INSERT, "An error occurred at renewable electricity data");
+                    ActionResponseHandler.CreateResponse(_response, "ERROR", "An error occurred at renewable electricity data");
                 }
                 else
                 {
-                    ActionResponseHandlers.HandleSuccess(ref _response, ActionResponseHandlers.OperationType.INSERT, "renewable electricity data updated successfully!", data);
+                    ActionResponseHandler.CreateResponse(_response, "SUCCESS", data);
                 }
             }
             catch (Exception ex)
             {
-                ActionResponseHandlers.HandleException(ref _response, operationType: ActionResponseHandlers.OperationType.FETCH, ex: ex, recipient: _recipient);
-                throw (ex??ex.InnerException)!;
+                ActionResponseHandler.CreateResponse(_response, "EXCEPTION", ex);
             }
 
             return _response;
         }
         
         [HttpPost("search")]
-        public ActionResponse SearchDatafromDatabase(RenewableElectricity.Search Search)
+        public ActionResponse SearchDataFromDatabase(RenewableElectricity.Search search)
         {
             try
             {
-                var data = _renewableElectricityHandler.SearchData(Search);
+                var data = _renewableElectricityHandler.SearchData(search);
                 if (data == null)
                 {
-                    ActionResponseHandlers.HandleError(ref _response, operationType: ActionResponseHandlers.OperationType.FETCH, "An error occurred at search");
+                    ActionResponseHandler.CreateResponse(_response, "ERROR", "An error occurred at search");
                 }
                 else
                 {
-                    ActionResponseHandlers.HandleSuccess(ref _response, ActionResponseHandlers.OperationType.INSERT, "Search results retrieved successfully!", data);
+                    ActionResponseHandler.CreateResponse(_response, "SUCCESS", data);
                 }
             }
             catch (Exception ex)
             {
-                ActionResponseHandlers.HandleException(ref _response, operationType: ActionResponseHandlers.OperationType.FETCH, ex: ex, recipient: _recipient);
-                throw (ex ?? ex.InnerException)!;
+                ActionResponseHandler.CreateResponse(_response, "EXCEPTION", ex);
             }
 
             return _response;

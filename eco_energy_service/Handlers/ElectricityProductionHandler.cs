@@ -1,22 +1,22 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
-using eco_lib_core;
+using eco_energy_services.Core;
 using eco_lib_energy;
 using eco_lib_energy_dao.DBModels;
 using MySql.Data.MySqlClient;
+using ActionResponse = eco_energy_services.Core.ActionResponse;
 
 namespace eco_energy_services.Handlers
 {
     public class ElectricityProductionHandler
     {
-        private const string _Url = "https://data.gov.gr/api/v1/query/admie_dailyenergybalanceanalysis";//?date_from=2023-07-07&date_to=2023-07-14
-        private const string _Token = "14f9afc3ffb341d9e0c22c2807f6e4c1a60f75cd";
+        private const string Url = "https://data.gov.gr/api/v1/query/admie_dailyenergybalanceanalysis";//?date_from=2023-07-07&date_to=2023-07-14
+        private const string Token = "14f9afc3ffb341d9e0c22c2807f6e4c1a60f75cd";
 
         private readonly IConfiguration _config;
         private readonly energy_DBHandling _dBHandling;
-        private ActionResponse _response;
+        private readonly ActionResponse _response;
         private readonly int _limit;
-        private readonly string _recipient;
         private readonly JsonSerializerOptions _options;
         public ElectricityProductionHandler(IConfiguration configuration, ActionResponse response)
         {
@@ -25,7 +25,6 @@ namespace eco_energy_services.Handlers
 
             _dBHandling = new energy_DBHandling(_config);
             _response = response;//new ActionResponse();
-            _recipient = _config.GetValue<string>("GlobalVariables:ERROR_EMAIL_NOTIFICATIONS");
             _limit = _config.GetValue<int>("GlobalVariables:DEFAULT_ENTRIES_PER_PAGE");
 
             _options = new JsonSerializerOptions 
@@ -42,58 +41,50 @@ namespace eco_energy_services.Handlers
 
         #region Tools
 
-        public string CreateQuery(ElectricityProduction.Search Search)
+        public string CreateQuery(ElectricityProduction.Search search)
         {
             var queryList = new List<string>();
-            if (Search.FuelIDs.IsListSafe())
+            if (search.FuelIDs.IsListSafe())
             {
-                queryList.Add("FuelID IN (" + string.Join(',',Search.FuelIDs) + ")");
+                queryList.Add("FuelID IN (" + string.Join(',',search.FuelIDs) + ")");
             }
-            if (Search.Fuel != null)
+            if (search.Fuel != null)
             {
-                queryList.Add("Fuel.StartsWith(\"" + Search.Fuel.ToUpper() + "\")");
+                queryList.Add("Fuel.StartsWith(\"" + search.Fuel.ToUpper() + "\")");
             }
-            if (Search.Year != null)
+            if (search.Year != null)
             {
-                queryList.Add("year=\"" + Search.Year + "\" ");
+                queryList.Add("year=\"" + search.Year + "\" ");
             }
 
-            if (Search.Month != null)
+            if (search.Month != null)
             {
-                queryList.Add("month=\"" + Search.Month + "\" ");
+                queryList.Add("month=\"" + search.Month + "\" ");
             }
-            if (Search.Day != null)
+            if (search.Day != null)
             {
-                queryList.Add("day=\"" + Search.Day + "\" ");
+                queryList.Add("day=\"" + search.Day + "\" ");
             }
 
             return string.Join("&&", queryList);
         }
 
-        public async Task SaveElectricalProduction(List<DBElectricityProduction> tobepassed, string con_string)
+        public async Task SaveElectricalProduction(List<DBElectricityProduction> toBePassed, string conString)
         {
-            try
+            var toBeDeleted = _dBHandling.GetDBElectricityProductions().ToList();
+            _dBHandling.DeleteDBElectricityProductions(toBeDeleted);
+            _dBHandling.CommitToDb();
+
+            var commandText = "ALTER TABLE electricity_production AUTO_INCREMENT = 1";
+            await using (var connection = new MySqlConnection(conString))
             {
-                var tobeDeleted = _dBHandling.GetDBElectricityProductions().ToList();
-                _dBHandling.DeleteDBElectricityProductions(tobeDeleted);
-                _dBHandling.CommitToDb();
-
-                var commandText = "ALTER TABLE electricity_production AUTO_INCREMENT = 1";
-                await using (var connection = new MySqlConnection(con_string))
-                {
-                    var command = new MySqlCommand(commandText, connection);
-                    command.Connection.Open();
-                    command.ExecuteNonQuery();
-                }
-
-                _dBHandling.UpdateDBElectricityProductions(tobepassed);
-                _dBHandling.CommitToDb();
-
+                var command = new MySqlCommand(commandText, connection);
+                command.Connection.Open();
+                command.ExecuteNonQuery();
             }
-            catch (Exception ex)
-            {
-                throw (ex ?? ex.InnerException)!;
-            }
+
+            _dBHandling.UpdateDBElectricityProductions(toBePassed);
+            _dBHandling.CommitToDb();
         }
 
         public void FixOrderBy(ref List<DBElectricityProduction> tobefetched, ElectricityProduction.Search search)
@@ -109,7 +100,7 @@ namespace eco_energy_services.Handlers
                             
                             Month = 1,
                             Day = 1,
-                            Fuel = null,
+                            Fuel = null!,
                             Energy_mwh = g.Sum(x => x.Energy_mwh)
                         })
                         .ToList();
@@ -122,7 +113,7 @@ namespace eco_energy_services.Handlers
                             Year = g.Key.Year,
                             Month = g.Key.Month,
                             Day = 1,
-                            Fuel = null,
+                            Fuel = null!,
                             Energy_mwh = g.Sum(x => x.Energy_mwh)
                         })
                         .ToList();
@@ -182,11 +173,11 @@ namespace eco_energy_services.Handlers
         #endregion
 
         #region URL
-        public async Task<List<ElectricityProduction.Response>> GetElectricityProductionURL()
+        public async Task<List<ElectricityProduction.Response>?> GetElectricityProductionUrl()
         {
             using var client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Authorization", "Token "+_Token+"");
-            var response = await client.GetAsync(_Url);
+            client.DefaultRequestHeaders.Add("Authorization", "Token "+Token+"");
+            var response = await client.GetAsync(Url);
             if (!response.IsSuccessStatusCode) { return null; }
 
             var responseContent = response.Content;
@@ -203,13 +194,17 @@ namespace eco_energy_services.Handlers
         {
             try
             {
-                var con_string = _config.GetValue<string>("ConnectionStrings:DBContext");
+                var conString = _config.GetValue<string>("ConnectionStrings:DBContext");
 
-                var something = await GetElectricityProductionURL();
+                var electricityProductions = await GetElectricityProductionUrl();
+                
+                //var toBePassed = new List<DBElectricityProduction>().RemapFrom(something);
+                //var toBePassed = (List<DBElectricityProduction>)Remaper.remapObjects<DBElectricityProduction>(electricityProductions, new List<DBElectricityProduction>());
+                var toBePassed = RemapFromResponse(electricityProductions);
 
-                var tobepassed = new List<DBElectricityProduction>().RemapFrom(something);
+
                 var fuels = _dBHandling.GetDBFuels().ToList();
-                tobepassed.ForEach(e =>
+                toBePassed.ForEach(e =>
                 {
                     e.FuelID = fuels.Where(f => f.FuelValue == e.Fuel).Select(f=>f.FuelID).FirstOrDefault();
                     e.Year = e.Date.Year;
@@ -218,14 +213,14 @@ namespace eco_energy_services.Handlers
                 });
 
 
-                await SaveElectricalProduction(tobepassed, con_string);
+                await SaveElectricalProduction(toBePassed, conString);
 
-                return tobepassed.Take(10).ToList();
+                return toBePassed.Take(10).ToList();
             }
             catch (Exception ex)
             {
-                ActionResponseHandlers.HandleException(ref _response, operationType: ActionResponseHandlers.OperationType.FETCH, ex: ex, recipient: _recipient);
-                throw (ex ?? ex.InnerException)!;
+                ActionResponseHandler.CreateResponse(_response, "EXCEPTION", ex);
+                throw;
             }
         }
         
@@ -244,20 +239,20 @@ namespace eco_energy_services.Handlers
                 var tobefetched = _dBHandling.GetDBElectricityProductions(query).ToList();
                 if (!tobefetched.IsListSafe())
                 {
-                    ActionResponseHandlers.HandleError(ref _response, operationType: ActionResponseHandlers.OperationType.FETCH, "No such Data");
+                    ActionResponseHandler.CreateResponse(_response, "ERROR", "No such Data");
                     return payload;
                 }
                 FixOrderBy(ref tobefetched, search);
 
-                payload.Pagging = Utilities.calcuatePagging(search.Page, tobefetched.Count, search.Limit, _limit, noPagging: Convert.ToBoolean(search.NoPagging));
+                payload.Pagging = Utilities.CalculatePagging(search.Page, tobefetched.Count, search.Limit, _limit, noPagging: Convert.ToBoolean(search.NoPagging));
 
                 if (payload.Pagging.CurrentPage <= payload.Pagging.TotalPages)
                 {
-                    var electrical_productions = new List<ElectricityProduction.Response>();
+                    var electricalProductions = new List<ElectricityProduction.Response>();
                     var tempResults = tobefetched.Skip(payload.Pagging.EntriesStart).Take(payload.Pagging.EntriesPerPage).ToList();
                     tempResults.ForEach(ep => 
                     {
-                        electrical_productions.Add(new ElectricityProduction.Response
+                        electricalProductions.Add(new ElectricityProduction.Response
                         {
                             Fuel = ep.Fuel,
                             Energy_mwh = ep.Energy_mwh,
@@ -265,22 +260,25 @@ namespace eco_energy_services.Handlers
                         });
                     });
 
-                    payload.Productions = electrical_productions;
+                    payload.Productions = electricalProductions;
                 }
                 else
                 {
-                    ActionResponseHandlers.HandleError(ref _response, operationType: ActionResponseHandlers.OperationType.FETCH, "No Results, requested Page " + payload.Pagging.CurrentPage + " is greater than total number of pages " + payload.Pagging.TotalPages);
+                    ActionResponseHandler.CreateResponse(_response, "ERROR", "No Results, requested Page " + payload.Pagging.CurrentPage + " is greater than total number of pages " + payload.Pagging.TotalPages);
                 }
                 return payload;
             }
             catch (Exception ex)
             {
-                ActionResponseHandlers.HandleException(ref _response, operationType: ActionResponseHandlers.OperationType.FETCH, ex: ex, recipient: _recipient);
-                throw (ex ?? ex.InnerException)!;
+                ActionResponseHandler.CreateResponse(_response, "EXCEPTION", ex);
+                throw;
             }
         }
 
-
+        public List<DBElectricityProduction> RemapFromResponse(List<ElectricityProduction.Response> tempResults)
+        {
+            return tempResults.Select(temp => new DBElectricityProduction { Fuel = temp.Fuel, Date = temp.Date, Energy_mwh = temp.Energy_mwh}).ToList();
+        }
 
     }
 

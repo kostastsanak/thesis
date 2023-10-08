@@ -1,14 +1,11 @@
 C:\Users\tsanak\Desktop\scripts\thesis\energy\eco_lib_energy\eco_lib_energy\bin\Release\net6.0\eco_lib_energy.deps.json
 C:\Users\tsanak\Desktop\scripts\thesis\energy\eco_lib_energy\eco_lib_energy\bin\Release\net6.0\eco_lib_energy.dll
 C:\Users\tsanak\Desktop\scripts\thesis\energy\eco_lib_energy\eco_lib_energy\bin\Release\net6.0\eco_lib_energy.pdb
-C:\Users\tsanak\Desktop\scripts\thesis\energy\eco_lib_energy\eco_lib_energy\bin\Release\net6.0\eco_lib_core.dll
-C:\Users\tsanak\Desktop\scripts\thesis\energy\eco_lib_energy\eco_lib_energy\bin\Release\net6.0\eco_lib_core.pdb
 C:\Users\tsanak\Desktop\scripts\thesis\energy\eco_lib_energy\eco_lib_energy\obj\Release\net6.0\eco_lib_energy.csproj.AssemblyReference.cache
 C:\Users\tsanak\Desktop\scripts\thesis\energy\eco_lib_energy\eco_lib_energy\obj\Release\net6.0\eco_lib_energy.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\tsanak\Desktop\scripts\thesis\energy\eco_lib_energy\eco_lib_energy\obj\Release\net6.0\eco_lib_energy.AssemblyInfoInputs.cache
 C:\Users\tsanak\Desktop\scripts\thesis\energy\eco_lib_energy\eco_lib_energy\obj\Release\net6.0\eco_lib_energy.AssemblyInfo.cs
 C:\Users\tsanak\Desktop\scripts\thesis\energy\eco_lib_energy\eco_lib_energy\obj\Release\net6.0\eco_lib_energy.csproj.CoreCompileInputs.cache
-C:\Users\tsanak\Desktop\scripts\thesis\energy\eco_lib_energy\eco_lib_energy\obj\Release\net6.0\eco_lib_energy.csproj.CopyComplete
 C:\Users\tsanak\Desktop\scripts\thesis\energy\eco_lib_energy\eco_lib_energy\obj\Release\net6.0\eco_lib_energy.dll
 C:\Users\tsanak\Desktop\scripts\thesis\energy\eco_lib_energy\eco_lib_energy\obj\Release\net6.0\refint\eco_lib_energy.dll
 C:\Users\tsanak\Desktop\scripts\thesis\energy\eco_lib_energy\eco_lib_energy\obj\Release\net6.0\eco_lib_energy.pdb

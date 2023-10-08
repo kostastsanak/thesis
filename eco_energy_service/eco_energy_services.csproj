@@ -20,9 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="eco_lib_core">
-      <HintPath>..\..\eco_lib_core\bin\Release\netcoreapp3.1\win-x64\eco_lib_core.dll</HintPath>
-    </Reference>
     <Reference Include="eco_lib_energy">
       <HintPath>..\eco_lib_energy\eco_lib_energy\bin\Release\net6.0\win-x64\eco_lib_energy.dll</HintPath>
     </Reference>

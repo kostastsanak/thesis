@@ -1,8 +1,9 @@
+using eco_energy_services.Core;
 using eco_energy_services.Handlers;
-using eco_lib_core;
 using eco_lib_energy;
 using eco_lib_energy_dao.DBModels;
 using Microsoft.AspNetCore.Mvc;
+using ActionResponse = eco_energy_services.Core.ActionResponse;
 
 namespace eco_energy_services.Controllers
 {
@@ -10,8 +11,7 @@ namespace eco_energy_services.Controllers
     [Route("api/gov/electricity/production")]
     public class ElectricityProductionController : ControllerBase
     {
-        private ActionResponse _response;
-        private readonly string _recipient;
+        private readonly ActionResponse _response;
         private readonly energy_DBHandling _dBHandling;
         private readonly ElectricityProductionHandler _electricityProductionHandler;
 
@@ -19,29 +19,27 @@ namespace eco_energy_services.Controllers
         {
             _response = new ActionResponse();
             _dBHandling = new energy_DBHandling(configuration);
-            _recipient = configuration.GetValue<string>("GlobalVariables:ERROR_EMAIL_NOTIFICATIONS");
             _electricityProductionHandler = new ElectricityProductionHandler(configuration, _response);
         }
 
         [HttpPut("update")]
-        public async Task<ActionResponse> PassDatatoDatabase()
+        public async Task<ActionResponse> PassDataToDatabase()
         {
             try
             {
                 var data = await _electricityProductionHandler.GetData();
                 if (!data.IsListSafe())
                 {
-                    ActionResponseHandlers.HandleError(ref _response, operationType: ActionResponseHandlers.OperationType.INSERT, "An error occurred at Electrical production data");
+                    ActionResponseHandler.CreateResponse(_response, "ERROR", "An error occurred at Electrical production data");
                 }
                 else
                 {
-                    ActionResponseHandlers.HandleSuccess(ref _response, ActionResponseHandlers.OperationType.INSERT, "Electrical production data updated successfully!", data);
+                    ActionResponseHandler.CreateResponse(_response, "SUCCESS", data);
                 }
             }
             catch (Exception ex)
             {
-                ActionResponseHandlers.HandleException(ref _response, operationType: ActionResponseHandlers.OperationType.FETCH, ex: ex, recipient: _recipient);
-                throw (ex??ex.InnerException)!;
+                ActionResponseHandler.CreateResponse(_response, "EXCEPTION", ex);
             }
 
             return _response;
@@ -49,24 +47,23 @@ namespace eco_energy_services.Controllers
 
 
         [HttpPost("search")]
-        public ActionResponse SearchDatafromDatabase(ElectricityProduction.Search Search)
+        public ActionResponse SearchDataFromDatabase(ElectricityProduction.Search search)
         {
             try
             {
-                var data = _electricityProductionHandler.SearchData(Search);
+                var data = _electricityProductionHandler.SearchData(search);
                 if (data == null)
                 {
-                    ActionResponseHandlers.HandleError(ref _response, operationType: ActionResponseHandlers.OperationType.FETCH, "An error occurred at search");
+                    ActionResponseHandler.CreateResponse(_response, "ERROR", "An error occurred at search");
                 }
                 else
                 {
-                    ActionResponseHandlers.HandleSuccess(ref _response, ActionResponseHandlers.OperationType.INSERT, "Search results retrieved successfully!", data);
+                    ActionResponseHandler.CreateResponse(_response, "SUCCESS", data);
                 }
             }
             catch (Exception ex)
             {
-                ActionResponseHandlers.HandleException(ref _response, operationType: ActionResponseHandlers.OperationType.FETCH, ex: ex, recipient: _recipient);
-                throw (ex ?? ex.InnerException)!;
+                ActionResponseHandler.CreateResponse(_response, "EXCEPTION", ex);
             }
 
             return _response;
@@ -81,17 +78,16 @@ namespace eco_energy_services.Controllers
                 var data = _dBHandling.GetDBFuels().ToList();
                 if (!data.IsListSafe())
                 {
-                    ActionResponseHandlers.HandleError(ref _response, operationType: ActionResponseHandlers.OperationType.FETCH, "An error occurred at search");
+                    ActionResponseHandler.CreateResponse(_response, "ERROR", "An error occurred at search");
                 }
                 else
                 {
-                    ActionResponseHandlers.HandleSuccess(ref _response, ActionResponseHandlers.OperationType.FETCH, "Fuel results retrieved successfully!", data);
+                    ActionResponseHandler.CreateResponse(_response, "SUCCESS", data);
                 }
             }
             catch (Exception ex)
             {
-                ActionResponseHandlers.HandleException(ref _response, operationType: ActionResponseHandlers.OperationType.FETCH, ex: ex, recipient: _recipient);
-                throw (ex ?? ex.InnerException)!;
+                ActionResponseHandler.CreateResponse(_response, "EXCEPTION", ex);
             }
 
             return _response;

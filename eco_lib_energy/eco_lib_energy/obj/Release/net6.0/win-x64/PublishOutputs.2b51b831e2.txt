@@ -224,5 +224,3 @@ C:\Users\tsanak\Desktop\scripts\thesis\energy\eco_lib_energy\eco_lib_energy\bin\
 C:\Users\tsanak\Desktop\scripts\thesis\energy\eco_lib_energy\eco_lib_energy\bin\Release\net6.0\publish\win-x64\msquic.dll
 C:\Users\tsanak\Desktop\scripts\thesis\energy\eco_lib_energy\eco_lib_energy\bin\Release\net6.0\publish\win-x64\ucrtbase.dll
 C:\Users\tsanak\Desktop\scripts\thesis\energy\eco_lib_energy\eco_lib_energy\bin\Release\net6.0\publish\win-x64\Newtonsoft.Json.dll
-C:\Users\tsanak\Desktop\scripts\thesis\energy\eco_lib_energy\eco_lib_energy\bin\Release\net6.0\publish\win-x64\eco_lib_core.dll
-C:\Users\tsanak\Desktop\scripts\thesis\energy\eco_lib_energy\eco_lib_energy\bin\Release\net6.0\publish\win-x64\eco_lib_core.pdb

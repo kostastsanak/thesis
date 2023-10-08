@@ -4,7 +4,7 @@
     {
         public class ApiEnergyPagging
         {
-            public eco_lib_core.Api_Pagging Pagging { get; set; }
+            public Api_Pagging Pagging { get; set; }
             public List<ElectricityProduction.Response> Productions { get; set; }
         }
         public class Response
