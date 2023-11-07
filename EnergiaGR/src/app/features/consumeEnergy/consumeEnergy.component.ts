@@ -13,7 +13,7 @@ import { ConsumeEnergyPieChartComponent } from './consumeEnergyPieChart/consumeE
   templateUrl: './consumeEnergy.component.html',
   styleUrls: ['./consumeEnergy.component.scss'],
   standalone : true,
-  imports: [ConsumeEnergyFormComponent, ConsumeEnergyTableComponent, MatIconModule, MatTabsModule, ConsumeEnergyBarChartComponent, CommonModule, ConsumeEnergyPieChartComponent]
+  imports: [ConsumeEnergyTableComponent, ConsumeEnergyPieChartComponent,ConsumeEnergyFormComponent, ConsumeEnergyBarChartComponent, MatIconModule, MatTabsModule, CommonModule]
 })
 export class ConsumeEnergyComponent implements OnInit {
   showError:boolean=false;

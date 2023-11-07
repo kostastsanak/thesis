@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "HLPPNtVulPp4Kk3sPOVsG0s4sKW4HmqtKQqx6LWevKXFZP8NFOKRed7b61BH2xg3WyUTq8Z4zoOp9eUWgEetxA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\tsanak\\Desktop\\scripts\\thesis\\energy\\thesis\\lib_energy\\lib_energy\\lib_energy.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tsanak\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
