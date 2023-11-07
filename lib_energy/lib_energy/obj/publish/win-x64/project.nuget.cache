@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "g2scfnZdnLzr8VEPHKDHRvckRh+/gSQS1zDxknG6Tva0HUJ7dnYdZxhllIBbFTX7I+ZnQiBzaZm6vVxrHYBECA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\tsanak\\Desktop\\scripts\\thesis\\energy\\thesis\\lib_energy\\lib_energy\\lib_energy.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tsanak\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\tsanak\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\6.0.18\\microsoft.netcore.app.runtime.win-x64.6.0.18.nupkg.sha512",
+    "C:\\Users\\tsanak\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\6.0.18\\microsoft.windowsdesktop.app.runtime.win-x64.6.0.18.nupkg.sha512",
+    "C:\\Users\\tsanak\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\6.0.18\\microsoft.aspnetcore.app.runtime.win-x64.6.0.18.nupkg.sha512"
+  ],
+  "logs": []
+}

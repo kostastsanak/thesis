@@ -1,0 +1,12 @@
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy_dao\bin\Release\net6.0\win-x64\lib_energy_dao.deps.json
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy_dao\bin\Release\net6.0\win-x64\lib_energy_dao.dll
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy_dao\bin\Release\net6.0\win-x64\lib_energy_dao.pdb
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy_dao\obj\Release\net6.0\win-x64\lib_energy_dao.csproj.AssemblyReference.cache
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy_dao\obj\Release\net6.0\win-x64\lib_energy_dao.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy_dao\obj\Release\net6.0\win-x64\lib_energy_dao.AssemblyInfoInputs.cache
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy_dao\obj\Release\net6.0\win-x64\lib_energy_dao.AssemblyInfo.cs
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy_dao\obj\Release\net6.0\win-x64\lib_energy_dao.csproj.CoreCompileInputs.cache
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy_dao\obj\Release\net6.0\win-x64\lib_energy_dao.dll
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy_dao\obj\Release\net6.0\win-x64\refint\lib_energy_dao.dll
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy_dao\obj\Release\net6.0\win-x64\lib_energy_dao.pdb
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy_dao\obj\Release\net6.0\win-x64\ref\lib_energy_dao.dll

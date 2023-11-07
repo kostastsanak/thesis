@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "7t6gvoIRrS7JgYek1HTsE6TnmYQbD2x0dJTC03WoNsI=",
+  "Source": "energy_service",
+  "BasePath": "_content/energy_service",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

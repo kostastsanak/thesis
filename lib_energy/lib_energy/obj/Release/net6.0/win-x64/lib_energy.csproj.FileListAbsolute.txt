@@ -1,0 +1,12 @@
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy\bin\Release\net6.0\win-x64\lib_energy.deps.json
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy\bin\Release\net6.0\win-x64\lib_energy.dll
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy\bin\Release\net6.0\win-x64\lib_energy.pdb
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy\obj\Release\net6.0\win-x64\lib_energy.csproj.AssemblyReference.cache
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy\obj\Release\net6.0\win-x64\lib_energy.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy\obj\Release\net6.0\win-x64\lib_energy.AssemblyInfoInputs.cache
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy\obj\Release\net6.0\win-x64\lib_energy.AssemblyInfo.cs
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy\obj\Release\net6.0\win-x64\lib_energy.csproj.CoreCompileInputs.cache
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy\obj\Release\net6.0\win-x64\lib_energy.dll
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy\obj\Release\net6.0\win-x64\refint\lib_energy.dll
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy\obj\Release\net6.0\win-x64\lib_energy.pdb
+C:\Users\tsanak\Desktop\scripts\thesis\energy\thesis\lib_energy\lib_energy\obj\Release\net6.0\win-x64\ref\lib_energy.dll
